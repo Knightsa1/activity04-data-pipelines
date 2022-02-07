@@ -248,8 +248,7 @@ college_recent_grads %>%
 
 Discuss your output as it relates to the research question.
 
-**Response**: The stem fields that earn less than the median have to do with the environment and animal life with a curious neuroscience.
-
+**Response**: There are only five jobs that earn less than the median and they have to do with the eviroment and animals. Plus there is a strange neuroscience one.
 
 ![](README-img/noun_pause.png) **(Final) Planned Pause Point**: If you have any questions, contact your instructor. Otherwise feel free to continue on.
 
