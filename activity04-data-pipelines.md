@@ -284,7 +284,9 @@ college_recent_grads %>%
     ## 10    65 General Agriculture                                  0.0196 
     ## # … with 163 more rows
 
-**Response**:
+**Response**: The major groups of Mathematics and Computer Science,
+Military Technologies, Botany,Soil Science, and Education Administration
+and Supervision all appear to have no unemployment.
 
 <img src="README-img/noun_pause.png" alt="pause" width = "20"/>
 <b>Planned Pause Point</b>: If you feel that you have a good
@@ -298,9 +300,31 @@ Using the `college_recent_grads` dataset and functions from `{dplyr}`,
 `arrange` the dataset by `sharewomen`, and `select` only `rank`,
 `major`, and `sharewomen`. Name your code chunk `highest_prop_women`.
 
+``` r
+college_recent_grads %>% 
+  arrange(desc(sharewomen)) %>% 
+  select(rank, major, sharewomen)
+```
+
+    ## # A tibble: 173 x 3
+    ##     rank major                                         sharewomen
+    ##    <dbl> <chr>                                              <dbl>
+    ##  1   165 Early Childhood Education                          0.969
+    ##  2   164 Communication Disorders Sciences And Services      0.968
+    ##  3    52 Medical Assisting Services                         0.928
+    ##  4   139 Elementary Education                               0.924
+    ##  5   151 Family And Consumer Sciences                       0.911
+    ##  6   101 Special Needs Education                            0.907
+    ##  7   157 Human Services And Community Organization          0.906
+    ##  8   152 Social Work                                        0.904
+    ##  9    35 Nursing                                            0.896
+    ## 10    89 Miscellaneous Health Medical Professions           0.881
+    ## # … with 163 more rows
+
 Discuss your output as it relates to the research question.
 
-**Response**:
+**Response**: The majors with the higest propotion of women are in
+education, medical assisting, and social types of fields.
 
 ![](README-img/noun_pause.png) **Planned Pause Point**: If you have any
 questions, contact your instructor. Otherwise feel free to continue on.
@@ -330,6 +354,43 @@ for all majors is $36,000 to *keep* the rows in the
 *less* than the `median` salary of all majors. Only display the
 variables `major`, `p25th`, `median`, and `p75th` Name the code chunk
 `stem_low_salaries`.
+
+``` r
+college_recent_grads %>% 
+  filter(major_category == stem_categories & median < 36000) %>% 
+  select(major_category, median) %>% 
+  arrange(median)
+```
+
+    ## Warning in major_category == stem_categories: longer object length is not a
+    ## multiple of shorter object length
+
+    ## # A tibble: 5 x 2
+    ##   major_category          median
+    ##   <chr>                    <dbl>
+    ## 1 Biology & Life Science   26000
+    ## 2 Biology & Life Science   33000
+    ## 3 Computers & Mathematics  35000
+    ## 4 Biology & Life Science   35000
+    ## 5 Biology & Life Science   35600
+
+``` r
+college_recent_grads %>% 
+  filter(major_category == stem_categories & median < 36000) %>% 
+  select(major, p25th, median, p75th)
+```
+
+    ## Warning in major_category == stem_categories: longer object length is not a
+    ## multiple of shorter object length
+
+    ## # A tibble: 5 x 4
+    ##   major                      p25th median p75th
+    ##   <chr>                      <dbl>  <dbl> <dbl>
+    ## 1 Environmental Science      25000  35600 40200
+    ## 2 Communication Technologies 25000  35000 45000
+    ## 3 Neuroscience               30000  35000 44000
+    ## 4 Ecology                    23000  33000 42000
+    ## 5 Zoology                    20000  26000 39000
 
 Discuss your output as it relates to the research question.
 

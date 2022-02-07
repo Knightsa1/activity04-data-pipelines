@@ -196,7 +196,7 @@ college_recent_grads %>%
 
 ```
 
-**Response**:
+**Response**: The major groups of Mathematics and Computer Science, Military Technologies, Botany,Soil Science, and Education Administration and Supervision all appear to have no unemployment.
 
 
 <img src="README-img/noun_pause.png" alt="pause" width = "20"/> <b>Planned Pause Point</b>: If you feel that you have a good understanding of these commands, feel free to start working on your project. The remainder of this activity will help to expand these commands.
@@ -207,12 +207,14 @@ Using the `college_recent_grads` dataset and functions from `{dplyr}`, `arrange`
 Name your code chunk `highest_prop_women`.
 
 ```{r}
-
+college_recent_grads %>% 
+  arrange(desc(sharewomen)) %>% 
+  select(rank, major, sharewomen)
 ```
 
 Discuss your output as it relates to the research question.
 
-**Response**:
+**Response**: The majors with the higest propotion of women are in education, medical assisting, and social types of fields.
 
 
 ![](README-img/noun_pause.png) **Planned Pause Point**: If you have any questions, contact your instructor. Otherwise feel free to continue on.
@@ -237,13 +239,16 @@ Using the `stem_categories` vector and knowledge that the median salary for all 
 Only display the variables `major`, `p25th`, `median`, and `p75th`
 Name the code chunk `stem_low_salaries`.
 
-```{r}
 
+```{r stem_low_salaries}
+college_recent_grads %>% 
+  filter(major_category == stem_categories & median < 36000) %>% 
+  select(major, p25th, median, p75th)
 ```
 
 Discuss your output as it relates to the research question.
 
-**Response**:
+**Response**: The stem fields that earn less than the median have to do with the environment and animal life with a curious neuroscience.
 
 
 ![](README-img/noun_pause.png) **(Final) Planned Pause Point**: If you have any questions, contact your instructor. Otherwise feel free to continue on.
